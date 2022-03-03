@@ -2921,6 +2921,7 @@ fn test_linux(target: &str) {
         "asm/mman.h",
         "linux/can.h",
         "linux/can/raw.h",
+        "linux/can/j1939.h",
         "linux/dccp.h",
         "linux/errqueue.h",
         "linux/falloc.h",
@@ -3232,10 +3233,16 @@ fn test_linux(target: &str) {
             | "IFLA_PERM_ADDRESS"
             | "IFLA_PROTO_DOWN_REASON" => true,
 
-            // FIXME: They require recent kernel header:
-            | "CAN_J1939"
-            | "CAN_RAW_FILTER_MAX"
-            | "CAN_NPROTO" => true,
+            // FIXME: Requires recent kernel headers (5.15)
+            | "J1939_NLA_TOTAL_SIZE"
+            | "J1939_NLA_PGN"
+            | "J1939_NLA_SRC_NAME"
+            | "J1939_NLA_DEST_NAME"
+            | "J1939_NLA_SRC_ADDR"
+            | "J1939_NLA_DEST_ADDR"
+            | "J1939_EE_INFO_RX_RTS"
+            | "J1939_EE_INFO_RX_DPO"
+            | "J1939_EE_INFO_RX_ABORT" => true,
 
             // FIXME: Requires recent kernel headers (5.8):
             "STATX_MNT_ID" => true,
